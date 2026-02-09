@@ -1,0 +1,84 @@
+Debugging thoughts
+
+- check dates, format changes in the middle of 2020
+- scr = source code 
+- take output and | cat does print out intermediate results, it looks all the print statements together. 
+to make that not happen export PYTHONUNBUFFERED=1 #sets enviroment variable to allow for intermediate print, recommended
+->>> print(json.dumps(data, indent = 4)) ## viewing someething or another 
+
+- to exit a for loop that puts you in interactive = exit()
+- check if what you're doing works on small versions of file, not entire thing when working with large files
+use if linenum > 10: breaks to just do 10 loops, need to put in line number 
+-  pprint = pretty print, good module to download 
+
+chmod a+x ./src/map.py ## allows for permissions to run
+
+fun open problems 
+ - can every kind of paraelle programming be done with map reduce? 
+ - no parallel code in python because of global *something* lock?
+
+Other notes 
+use vim scr/map.py to get into the map.py file, 
+instead of cd because it gets you less errors, always staying in the file and using routes to get into folders
+>>> = interactive python prompt
+
+use single quotes when inputting heredoc into llm
+$ to end of line in vim, ^ for beginning of line
+add -c to groq command to continue conversations 
+c$ - change to end of the line in vim
+ct* - change up to whatever character is in place of *
+
+into groq groq <<EOF
+  $(files-to-prompt scr/map.py)
+  the line xx is having issues how to deal with that? 
+  EOF
+
+MAP STEP
+
+hard-coding ./scr/map.py --input_path /data/Twitter\dataset/gepTwitter20-01-01.zip ##path to files 
+
+How to open zip file in python
+groq -c 'I don't want to extract file, I want to loop over each file in the zip file'
+
+
+inclass code ** not completed and couldn't figure out how to save" 
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument('--input_path', required=True)
+args = parser.parse_args()
+
+print("args.input_path=", args.input_path)
+
+import zipfile
+import time
+import datetime
+from collections import Counter
+import os
+
+#define mapping variables
+lang = Counter()
+## add path to unzip file
+with zipfile.ZipFile(args.input_path, 'r') as zip_ref:
+        for file_info in zip_ref.infolist():
+            file_name = file_info.filename
+            print(f'{time.time()} {file_name}')
+
+            with zip_ref.open(file_name) as file:
+                pass
+                #debugging info
+                #contents = file.read()
+                #print(file_name, contents)
+                #now reading jq things in python
+                for line in file.readlines():
+                    data = json.leads(line)
+                    #print("data['lang']="data['lang'])
+                    lang[data['lang']] +=1
+                    #import code
+                    #code.interact(local = locals()) #stops script and gives all varibles in an interactive
+import pprint
+pprint.pprint(lang)
+
+# save results to file
+output_filename = 'map_output/' + os.path.basename(args.input_path) #file portion is called a basename
+with open(output_filename, 'w') as fout:
+    json.dump(lang, fout) #not json.dumps because that goes to string, no s goes to file
