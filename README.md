@@ -12,17 +12,17 @@ The reduce process was then modified to take a list of hashtags as inputs, and t
 ## Visualizations
 
 Shows top 10 countries where tweets with "#coronavirus" originated from. 
-![](img/#coronavirus.png)
+<img src="img/%23coronavirus.png">
 
 Shows top 10 countries where tweets with "#코로나바이러스" originated from. 
-![](img/#코로나바이러스.png)
+<img src="img/%23%EC%BD%94%EB%A1%9C%EB%82%98%EB%B0%94%EC%9D%B4%EB%9F%AC%EC%8A%A4.png">
 
 Shows top ten langauges of tweets with "#coronavirus". 
-![](img/combined.lang#coronavirus.png)
+<img src="img/combined.lang%23coronavirus.png">
 
 Shows top 10 langauges of tweets with "#코로나바이러스". 
-![](img/combined.lang#코로나바이러스.png)
+<img src="img/combined.lang%23%EC%BD%94%EB%A1%9C%EB%82%98%EB%B0%94%EC%9D%B4%EB%9F%AC%EC%8A%A4.png">
 
 Shows how #coronavirus" and "sick" changed in their usage across 2020. 
-![](img/[#sick, #coronavirus]Frequency Over 2020.png)
+<img src="img/%5B%23sick%2C%20%23coronavirus%5DFrequency%20Over%202020.png">
 
